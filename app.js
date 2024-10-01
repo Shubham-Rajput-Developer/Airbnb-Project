@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const path = require("path");
 const methodOverride = require("method-override");
+const ejsMate = require("ejs-mate");
 
 main()
 .then(()=>{
@@ -21,23 +22,12 @@ app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+app.engine("ejs",ejsMate);
+app.use(express.static(path.join(__dirname,"/public")));
 
 app.get("/",(req,res)=>{
     res.send("Hi ,I am root");
 });
-
-// app.get("/testListening",async(req,res)=>{
-//     let sampleListing =  new Listing({
-//         title:"My new vila",
-//         description:"by the beach",
-//         price:1200,
-//         location:"Pune, Maharastra",
-//         country:"India",
-//     });
-//     await sampleListing.save();
-//     console.log("sample was saved");
-//     res.send("successfull testing");
-// });
 
 //Index route
 app.get("/listings",async (req,res)=>{
