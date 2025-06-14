@@ -11,8 +11,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-const listings = require("./routes/listing.js");
-const review = require("./routes/review.js");
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
+const userRouter = require("./routes/user.js");
 
 main()
 .then(()=>{
@@ -73,8 +74,9 @@ app.get("/demouser",async(req,res)=>{
 });
 
 //Use 
-app.use("/listings",listings);
-app.use("/listings/:id/reviews",review);
+app.use("/listings",listingRouter);
+app.use("/listings/:id/reviews",reviewRouter);
+app.use("/",userRouter);
 
 
 //If no route found that was throw
