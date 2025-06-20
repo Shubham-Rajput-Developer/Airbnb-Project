@@ -3,21 +3,26 @@
     <div class="row">
         <div class="col-8 offset-2"><br>
         <h2>Edit a Listing</h2>
-        <form  method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+        <form  method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
             <div>
                 <label for="title" class="form-label">Title</label>
                 <input type="text" name="listing[title]" value="<%= listing.title %>" class="form-control" required>
                 <div class="invalid-feedback">Please enter valid title!</div>
-            </div><br>
+            </div><br> 
             <div>
                 <label for="description" class="form-label">Description</label> 
                 <textarea name="listing[description]" placeholder="Enter description" class="form-control" required><%= listing.description %></textarea>
                 <div class="invalid-feedback">Please enter Short description!</div>
             </div><br>
+
+            <div class="card col-6 show-card listing-card">
+                Orginal Listing image <br>
+                <img src="<%= listing.image.url  %>" class="card-img-top  show-img" >
+            </div>
+            
             <div>
-                <label for="image" class="form-label">Image</label>
-                <input type="text" name="listing[image]" value="<%= listing.image %>" class="form-control" required>
-                <div class="invalid-feedback">Please enter valid link for image!</div>
+                <label for="image" class="form-label">Upload New image</label>
+                <input type="file" name="listing[image]"  class="form-control" >
             </div><br>
             <div class="row">
             <div class="col-md-4"> 
