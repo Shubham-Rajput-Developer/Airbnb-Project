@@ -14,12 +14,10 @@
                 <textarea name="listing[description]" placeholder="Enter description" class="form-control" required><%= listing.description %></textarea>
                 <div class="invalid-feedback">Please enter Short description!</div>
             </div><br>
-
             <div class="card col-6 show-card listing-card">
                 Orginal Listing image <br>
                 <img src="<%= listing.image.url  %>" class="card-img-top  show-img" >
-            </div>
-            
+            </div><br>
             <div>
                 <label for="image" class="form-label">Upload New image</label>
                 <input type="file" name="listing[image]"  class="form-control" >
